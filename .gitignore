@@ -1,0 +1,9 @@
+/node_modules
+/dist
+/.angular
+/out-tsc
+*.log
+scripts/scene-link-report.json
+.env
+.env.*
+!.env.example
