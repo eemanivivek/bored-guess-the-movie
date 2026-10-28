@@ -7,3 +7,18 @@
 .scene-credits { font-size:11px; color:var(--muted); margin-top:12px; }
 .scene-credits summary { cursor:pointer; }
 .scene-credits a { display:block; margin-top:8px; text-decoration:underline; }
+
+.recommendation-choice { text-align:center; }
+.choice-cards { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:38px 0 24px; }
+.choice-card { border:1px solid var(--line); border-radius:16px; padding:32px 26px; background:#fffcf6; color:var(--ink); text-align:left; transition:transform .2s,border-color .2s; }
+.choice-card:hover { transform:translateY(-4px); border-color:var(--purple); }
+.choice-card:first-child { background:#eee6f8; }
+.choice-card:last-child { background:#e3efe5; }
+.choice-icon { display:block; font-size:38px; margin-bottom:22px; }
+.choice-card h2 { font-size:23px; margin:12px 0; }
+.choice-card p { color:#65616e; font-size:14px; line-height:1.8; }
+.choice-action { display:block; color:#6640a9; font-size:13px; font-weight:700; margin-top:28px; }
+.game-options { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; border-top:1px solid var(--line); padding-top:20px; margin:4px 0 28px; }
+.game-options .input-help { margin-bottom:0; }
+.previous > div > .skipped-turn { color:#6a5b85; background:#eae3f1; }
+@media(max-width:600px) { .choice-cards { grid-template-columns:1fr; margin-top:25px; gap:15px; } .choice-card { padding:24px; } .choice-icon { margin-bottom:12px; } .game-options { flex-direction:column; gap:8px; } .game-options .subtle { padding-left:0; } }

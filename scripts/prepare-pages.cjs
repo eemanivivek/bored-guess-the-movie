@@ -7,7 +7,7 @@ if (!fs.existsSync(index)) throw new Error('Build the Angular app before prepari
 
 // Pages has no SPA rewrite rule. These entry points keep the clean Angular URLs
 // working on direct visits and refreshes; the base href resolves JS and assets.
-for (const route of ['start', 'questions', 'game', 'result']) {
+for (const route of ['start', 'questions', 'recommendation', 'game', 'result']) {
  const directory = path.join(output, route);
  fs.mkdirSync(directory, {recursive: true});
  fs.copyFileSync(index, path.join(directory, 'index.html'));
