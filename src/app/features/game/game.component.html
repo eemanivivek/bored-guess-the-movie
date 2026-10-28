@@ -26,7 +26,10 @@
   <label for="guess">Your best guess</label>
   <div class="guess-row">
    <input id="guess" name="guess" autocomplete="off" [ngModel]="guess()" (ngModelChange)="guess.set($event); message.set('')" placeholder="Type a Telugu movie name…" aria-controls="suggestions" [attr.aria-describedby]="message() ? 'guess-message' : null" />
-   <button class="button primary" type="submit" [disabled]="!guess().trim() || state.finished()">Guess movie ↗</button>
+   <div class="guess-actions">
+    <button class="button primary" type="submit" [disabled]="!guess().trim() || state.finished()">Guess movie ↗</button>
+    <button class="button outline" type="button" (click)="skip()" [disabled]="state.finished()" aria-describedby="skip-help">Skip hint →</button>
+   </div>
   </div>
   @if(guess().trim() && suggestions().length) {
    <div class="suggestions" id="suggestions" aria-label="Suggested movie titles">
@@ -34,10 +37,10 @@
    </div>
   }
   <p class="input-help">Spaces and punctuation don’t count. Movie knowledge does.</p>
+  <p class="input-help" id="skip-help">Skipping uses one attempt.</p>
   <p class="feedback" id="guess-message" aria-live="polite">{{message()}}</p>
  </form>
  <div class="game-options">
-  <div><button class="button outline" (click)="skip()" [disabled]="state.finished()" aria-describedby="skip-help">Skip hint →</button><p class="input-help" id="skip-help">Skipping uses one attempt.</p></div>
   <button class="button subtle" (click)="reveal()">Show movie details ↗</button>
  </div>
  @if(state.turns().length) {

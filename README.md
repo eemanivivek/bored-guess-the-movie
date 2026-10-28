@@ -39,12 +39,12 @@ The preparation script adds entry points for `/start`, `/questions`, `/recommend
 
 ## How it works
 
-After the questionnaire, the recommendation screen offers **Play guessing game** or **Show movie details** for the same selected movie. Viewing details skips the game entirely and displays a neutral recommendation heading. Another recommendation in this mode also opens details directly. During a game, **Show movie details** ends the guessing round without recording a loss.
+After the questionnaire, the recommendation screen asks **Do you wanna guess the movie?** with a play button and **Skip** underneath. Skip opens details for the same selected movie. Viewing details skips the game entirely and displays a neutral recommendation heading. Another recommendation in this mode also opens details directly. During a game, **Show movie details** ends the guessing round without recording a loss.
 
 
 Five config-driven single-select questions lead to a recommendation. Era is a strict filter: only movies from the selected era can be picked. Within that era, mood and genre matches earn three points each; company and runtime earn one each. There is no favourite-hero question or hero-based scoring. Neutral answers award no points. The service chooses randomly among the top-scoring eligible movies and falls back to a random movie within the selected era when every score is zero. “Get another recommendation” preserves the era and other answers and excludes the previous movie when another movie exists in that era; if only one exists, it repeats that movie rather than selecting outside the era. An era with no movies returns an explicit error.
 
-The game accepts any nonempty title, suggests up to five matching catalogue titles, and compares titles after removing punctuation and spaces and folding case. Duplicate wrong guesses cost no attempts. Each wrong answer unlocks a different scene photo plus a text clue. The **Skip hint** button consumes one attempt and advances to the next image/audio/text clue, even with an empty answer. Skips appear separately in the turn history. Five wrong guesses and/or skips end the game. A correct guess triggers the result and confetti; reduced-motion settings disable animations.
+The game accepts any nonempty title, suggests up to five matching catalogue titles, and compares titles after removing punctuation and spaces and folding case. Duplicate wrong guesses cost no attempts. Each wrong answer unlocks a different scene photo plus a text clue. The **Skip hint** button sits beside **Guess movie**, including on mobile. It consumes one attempt and advances to the next image/audio/text clue, even with an empty answer. Skips appear separately in the turn history. Five wrong guesses and/or skips end the game. A correct guess triggers the result and confetti; reduced-motion settings disable animations.
 
 ## Add questions
 
