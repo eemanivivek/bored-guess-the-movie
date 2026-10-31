@@ -54,7 +54,7 @@ npm run build -- --base-href /bored-guess-the-movie/
 node scripts/prepare-pages.cjs
 ```
 
-Direct routes are prepared for `/start`, `/questions`, `/recommendation`, `/game`, and `/result`. State lives in memory; refreshing returns to Start. Before public release, add an approved TMDB logo alongside the attribution notice, following [TMDB attribution guidance](https://www.themoviedb.org/about/logos-attribution). Third-party media retain their original rights.
+Direct routes are prepared for `/start`, `/questions`, `/recommendation`, `/game`, and `/result`. State lives in memory; refreshing returns to Start. The footer includes the official TMDB primary long logo from its [attribution page](https://www.themoviedb.org/about/logos-attribution), stored locally in `src/assets/images/tmdb-logo.svg`, alongside the attribution notice. Third-party media retain their original rights.
 
 ## Structure
 
@@ -71,3 +71,5 @@ Unit tests use fake upstream responses to verify filtering, API-only behavior, r
 `npm test` includes `tests/questionnaire-matrix.test.ts`. It derives all 1,440 answer combinations from the actual question configuration, verifies independent scoring and era expectations, and exercises 28,800 controlled game paths (1–5 approved photos, wrong guesses, skips, mixed turns and final-photo wins). It also checks API failures, missing images and optional reveal. These use controlled responses and do not certify real-world image availability or OCR accuracy.
 
 With Angular and the real API running locally, `npm run test:live` requests all 72 distinct era/genre/runtime filter combinations. Requests are paced below the local API limit. Its ignored `.angular/live-option-check.json` records status, era validation, exact genre/runtime matches and raw scene availability. Mood and company do not add API query combinations; their local scoring is covered exhaustively by the matrix tests. Live results are a snapshot, not a guarantee about future TMDB data or every browser.
+
+Public movie API: https://bored-guess-the-movie-api.bored-guess-the-movie.workers.dev/api. Its TMDB credential is stored as a Cloudflare Worker secret. GitHub Actions uses the public MOVIE_API_URL variable to connect the frontend.
