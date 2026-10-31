@@ -10,9 +10,18 @@ import { movieHint } from '../src/app/core/models/hint';
 import { hasFullSceneDeck, hasPlayableScenes, safeRoundImages } from '../src/app/core/models/screened-scenes';
 import { hasPrintedText, parseOcrWords } from '../src/app/core/models/image-screening';
 import { mapMovie } from '../backend/tmdb';
+import { resolveOcrSdk } from '../src/app/core/services/ocr-sdk';
 const remote=mapMovie({id:12345,title:'A Telugu Adventure',original_title:'ఒక సినిమా',original_language:'te',release_date:'2024-01-12',runtime:150,genres:[{id:28,name:'Action'}],images:{backdrops:Array.from({length:8},(_,i)=>({file_path:`/frame${i}.jpg`,iso_639_1:null}))}});
 const create=(get:(url:string)=>unknown)=>runInInjectionContext(Injector.create({providers:[{provide:HttpClient,useValue:{get}}]}),()=>new RecommendationService());
 const api=(movies=[remote])=>create(url=>of(url.includes('app-config')?{movieApiUrl:'/api'}:{movies}));
+
+test('photo checker handles the production CommonJS default wrapper and development named exports',async()=>{
+ const sdk={createWorker:()=>{},OEM:{LSTM_ONLY:1},PSM:{AUTO:'3'}};
+ assert.equal(resolveOcrSdk({default:sdk}),sdk);assert.equal(resolveOcrSdk(sdk),sdk);
+ const actual=resolveOcrSdk(await import('tesseract.js'));
+ assert.equal(actual.OEM.LSTM_ONLY,1);assert.equal(typeof actual.createWorker,'function');
+ for(const broken of [null,undefined,{}, {default:{}}, {createWorker:()=>{}}])assert.throws(()=>resolveOcrSdk(broken),/photo checker couldn’t start/);
+});
 test('API identity and image hosts are validated',()=>{
  assert.ok(validOnlineMovie(remote));assert.equal(validOnlineMovie({...remote,id:1}),false);
  assert.equal(validOnlineMovie({...remote,hintImages:['https://evil.example/image']}),false);

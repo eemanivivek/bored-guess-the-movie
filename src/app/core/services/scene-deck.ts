@@ -1,6 +1,7 @@
 import type { Worker } from 'tesseract.js';
 import { hasPrintedText, parseOcrWords } from '../models/image-screening';
 import { imageKey } from '../models/screened-scenes';
+import { resolveOcrSdk } from './ocr-sdk';
 
 export type SceneProgress = (message:string)=>void;
 export type SceneScreen = (urls:readonly string[],titles:readonly string[],progress?:SceneProgress,signal?:AbortSignal)=>Promise<string[]>;
@@ -16,7 +17,8 @@ async function bounded<T>(task:Promise<T>,milliseconds:number,message:string):Pr
 async function textWorker(progress:SceneProgress):Promise<Worker>{
  if(!workerPromise){
   progress('Loading the Telugu and English photo checker…');
-  workerPromise=import('tesseract.js').then(async sdk=>{
+  workerPromise=import('tesseract.js').then(async module=>{
+   const sdk=resolveOcrSdk(module);
    const creation=sdk.createWorker(['eng','tel'],sdk.OEM.LSTM_ONLY);
    let expired=false;
    creation.then(worker=>{if(expired)void worker.terminate();}).catch(()=>{});
