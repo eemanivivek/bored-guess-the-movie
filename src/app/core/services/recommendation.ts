@@ -9,7 +9,7 @@ export function scoreMovie(movie: Movie, answers: Answers): number {
  if(movie.moods.includes(answers['mood'])) score += 3;
  if(movie.genres.includes(answers['genre'])) score += 3;
  if(movie.company.includes(answers['company'])) score++;
- if(answers['time']==='Under 2 hrs' && movie.runtimeMinutes < 120 || answers['time']==='2-3 hrs' && movie.runtimeMinutes>=120 && movie.runtimeMinutes<=180) score++;
+ if(answers['time']==='Under 2 hrs' && movie.runtimeMinutes > 0 && movie.runtimeMinutes < 120 || answers['time']==='2-3 hrs' && movie.runtimeMinutes>=120 && movie.runtimeMinutes<=180) score++;
  return score;
 }
 export function selectMovie(movies: Movie[], answers: Answers, excludeId?: number): Movie {

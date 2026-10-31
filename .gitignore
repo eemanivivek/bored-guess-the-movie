@@ -7,3 +7,6 @@ scripts/scene-link-report.json
 .env
 .env.*
 !.env.example
+/.wrangler
+/backend/.wrangler
+/backend/.dev.vars

@@ -1,0 +1,166 @@
+[
+  {
+    "movieId": 1,
+    "platform": "youtube",
+    "language": "Telugu",
+    "url": "https://www.youtube.com/watch?v=tas_30CdOss",
+    "sourceUrl": "https://www.youtube.com/watch?v=tas_30CdOss",
+    "checkedAt": "2026-10-30",
+    "note": "Shalimar · full Telugu movie"
+  },
+  {
+    "movieId": 2,
+    "platform": "prime",
+    "language": "Telugu",
+    "url": "https://www.primevideo.com/detail/0IV96UE8J9WHV9WO41MR8YB0UX",
+    "sourceUrl": "https://www.primevideo.com/detail/0IV96UE8J9WHV9WO41MR8YB0UX",
+    "checkedAt": "2026-10-30"
+  },
+  {
+    "movieId": 3,
+    "platform": "aha",
+    "language": "Telugu",
+    "url": "https://www.aha.video/movie/shankara-bharanam",
+    "sourceUrl": "https://www.aha.video/movie/shankara-bharanam",
+    "checkedAt": "2026-10-30"
+  },
+  {
+    "movieId": 4,
+    "platform": "prime",
+    "language": "Telugu",
+    "url": "https://www.primevideo.com/detail/0N0G37VFIROIPXGBOSCA15WF8K",
+    "sourceUrl": "https://www.primevideo.com/-/es_419/detail/0N0G37VFIROIPXGBOSCA15WF8K",
+    "checkedAt": "2026-10-30",
+    "note": "Telugu · Eros Now add-on may apply"
+  },
+  {
+    "movieId": 5,
+    "platform": "prime",
+    "language": "Telugu",
+    "url": "https://www.primevideo.com/detail/0T4QSUIYL1MX13WPNXFUGV6C1I",
+    "sourceUrl": "https://www.primevideo.com/-/he/detail/0T4QSUIYL1MX13WPNXFUGV6C1I",
+    "checkedAt": "2026-10-30",
+    "note": "Telugu · Eros Now add-on may apply"
+  },
+  {
+    "movieId": 7,
+    "platform": "sunnxt",
+    "language": "Telugu",
+    "url": "https://www.sunnxt.com/telugu-movie-jagadeka-veerudu-athiloka-sundhari-1990/detail/25434",
+    "sourceUrl": "https://www.sunnxt.com/telugu-movie-jagadeka-veerudu-athiloka-sundhari-1990/detail/25434",
+    "checkedAt": "2026-10-30"
+  },
+  {
+    "movieId": 8,
+    "platform": "aha",
+    "language": "Telugu",
+    "url": "https://www.aha.video/movie/aditya-369",
+    "sourceUrl": "https://www.aha.video/movie/aditya-369",
+    "checkedAt": "2026-10-30"
+  },
+  {
+    "movieId": 9,
+    "platform": "aha",
+    "language": "Telugu",
+    "url": "https://www.aha.video/movie/kshana-kshanam-1991",
+    "sourceUrl": "https://www.aha.video/movie/kshana-kshanam-1991",
+    "checkedAt": "2026-10-30"
+  },
+  {
+    "movieId": 10,
+    "platform": "aha",
+    "language": "Telugu",
+    "url": "https://www.aha.video/movie/hello-brother",
+    "sourceUrl": "https://www.aha.video/movie/hello-brother",
+    "checkedAt": "2026-10-30"
+  },
+  {
+    "movieId": 10,
+    "platform": "prime",
+    "language": "Telugu",
+    "url": "https://www.primevideo.com/detail/0TIVRJVC7XCJI0C68W077QIL6V",
+    "sourceUrl": "https://www.primevideo.com/-/es_419/detail/0TIVRJVC7XCJI0C68W077QIL6V?tr=in",
+    "checkedAt": "2026-10-30"
+  },
+  {
+    "movieId": 14,
+    "platform": "sunnxt",
+    "language": "Telugu",
+    "url": "https://www.sunnxt.com/telugu-movie-okkadu-2003/detail/10645",
+    "sourceUrl": "https://www.sunnxt.com/telugu-movie-okkadu-2003/detail/10645",
+    "checkedAt": "2026-10-30"
+  },
+  {
+    "movieId": 15,
+    "platform": "aha",
+    "language": "Telugu",
+    "url": "https://www.aha.video/movie/athadu",
+    "sourceUrl": "https://www.aha.video/movie/athadu",
+    "checkedAt": "2026-10-30"
+  },
+  {
+    "movieId": 18,
+    "platform": "prime",
+    "language": "Telugu",
+    "url": "https://www.primevideo.com/detail/0IE7OWSVDRJ6DDKVKHNWSIRNWA",
+    "sourceUrl": "https://www.primevideo.com/-/es/detail/0IE7OWSVDRJ6DDKVKHNWSIRNWA",
+    "checkedAt": "2026-10-30",
+    "note": "Telugu · rental or purchase may apply"
+  },
+  {
+    "movieId": 19,
+    "platform": "aha",
+    "language": "Telugu",
+    "url": "https://www.aha.video/movie/magadheera",
+    "sourceUrl": "https://www.aha.video/movie/magadheera",
+    "checkedAt": "2026-10-30"
+  },
+  {
+    "movieId": 20,
+    "platform": "aha",
+    "language": "Telugu",
+    "url": "https://www.aha.video/movie/vedam",
+    "sourceUrl": "https://www.aha.video/movie/vedam",
+    "checkedAt": "2026-10-30"
+  },
+  {
+    "movieId": 22,
+    "platform": "aha",
+    "language": "Telugu",
+    "url": "https://www.aha.video/movie/eega/",
+    "sourceUrl": "https://www.aha.video/movie/eega/",
+    "checkedAt": "2026-10-30"
+  },
+  {
+    "movieId": 23,
+    "platform": "aha",
+    "language": "Telugu",
+    "url": "https://www.aha.video/movie/attarintiki-daredi",
+    "sourceUrl": "https://www.aha.video/movie/attarintiki-daredi",
+    "checkedAt": "2026-10-30"
+  },
+  {
+    "movieId": 27,
+    "platform": "zee5",
+    "language": "Telugu",
+    "url": "https://www.zee5.com/movies/details/jersey/0-0-59341/watch",
+    "sourceUrl": "https://www.zee5.com/movies/details/jersey/0-0-59341/watch",
+    "checkedAt": "2026-10-30"
+  },
+  {
+    "movieId": 29,
+    "platform": "zee5",
+    "language": "Telugu",
+    "url": "https://www.zee5.com/movies/details/rrr/0-0-1z5145092",
+    "sourceUrl": "https://www.zee5.com/movies/details/rrr/0-0-1z5145092",
+    "checkedAt": "2026-10-30"
+  },
+  {
+    "movieId": 30,
+    "platform": "zee5",
+    "language": "Telugu",
+    "url": "https://www.zee5.com/movies/details/hanu-man/0-0-1z5531939",
+    "sourceUrl": "https://www.zee5.com/movies/details/hanu-man/0-0-1z5531939",
+    "checkedAt": "2026-10-30"
+  }
+]

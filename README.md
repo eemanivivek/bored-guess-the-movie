@@ -1,80 +1,73 @@
 # Bored? Guess the Movie
 
-A responsive Telugu movie recommender and five-attempt guessing game. Built with Angular 18 standalone components, TypeScript, SCSS, routing and Angular Signals.
-
-Live app: https://eemanivivek.github.io/bored-guess-the-movie/
-
-Repository: https://github.com/eemanivivek/bored-guess-the-movie
+Angular 18 standalone Telugu movie recommender with an optional photo guessing game.
 
 ## Run locally
 
-Use Node.js 20.11.1+ (or Node 22) and npm.
+Use Node 22+ (or Node 20.11.1+ for Angular).
 
 ```sh
 npm install
-npx ng serve
 ```
 
-Open http://localhost:4200. `npm start` also runs `ng serve`. If the Angular CLI is installed globally, you can use `ng serve` directly.
+Copy `.env.example` to `.env`, set `TMDB_READ_TOKEN` to your TMDB API Read Access Token, and keep this ignored file private. Run these in separate terminals:
 
 ```sh
-npm run build
-npm test
+npm run api:start
+npm start
 ```
 
-Production files are in `dist/bored-guess-the-movie/browser`. Configure your static host to serve `index.html` for unknown routes, so `/questions`, `/recommendation`, `/game`, and `/result` work on direct navigation. Game state lives in memory: refreshing starts a new session, and guarded routes return to `/start` when no movie is selected.
+Open http://localhost:4200. The Angular proxy forwards `/api` to port 8787. Restart the API after editing `.env` or backend code. `/api/health` reports token presence only; obtaining a recommendation verifies upstream access.
 
-## GitHub Pages deployment
+```sh
+npm test
+npm run api:check
+npm run build
+```
 
-Pushing to `main` runs `.github/workflows/deploy-pages.yml`: install locked dependencies with Node 22, run the tests, build with the Pages base path, and deploy the output to GitHub Pages. The repository's Settings → Pages publishing source must be **GitHub Actions**.
+## Recommendations and photos
 
-To prepare the same output locally:
+Recommendations come exclusively from TMDB, with `with_original_language=te`. There is no saved-JSON recommendation fallback or fixed game-title pool. API failures display a retryable error. Era is a strict filter: before 2000, 2000–2010, 2011–2020, or 2021 onward. Genre and mood score three points each; company and runtime score one. Mood/company are genre-based heuristics. Random ties and a recent-history filter improve variety among sampled API candidates.
+
+Choosing Play checks up to 24 distinct backdrops per candidate. Language-tagged artwork and the poster are excluded first. A lazy Tesseract.js worker reads actual photo pixels using English and Telugu models, rejecting detected lettering. Metadata alone is not proof of a text-free image. Automatic OCR can miss stylized or faint lettering; it is not a guarantee. Models download on first play and are browser-cached. Photos are processed locally and are not uploaded to an OCR service.
+
+A game uses one to five distinct photos that pass screening; the number of attempts and hearts equals the approved photo count. The selected API movie is retained when it has at least one approved scene. If it has none, other API movies in the same era are tried. No old JSON movie is substituted. If none pass, the app offers Try more movies or movie details. Each wrong guess or Skip hint consumes one attempt and advances to the next photo. The final wrong guess or skip opens the result immediately. The UI shows the actual photo count. There are no year, actor, genre, plot, audio or poster clues. Punctuation/spaces/case are ignored for guesses, including alternative titles. Duplicate wrong guesses cost nothing.
+
+After the questionnaire, **Do you wanna guess the movie?** offers Play and Skip. Skip reveals the selected recommendation. Results show the poster, details and verified Telugu streaming links, when available. Missing links show an explanatory message.
+
+## Questions and OTT links
+
+Edit `src/app/core/models/questions.data.ts` to change the typed questionnaire. Add scoring rules in `core/services/recommendation.ts` for new attributes.
+
+`src/assets/data/movies.json` remains only as a legacy title/year lookup for manually verified OTT entries, and for legacy asset tooling/tests. It never selects a recommendation or supplies game photos. New movies are discovered automatically from TMDB.
+
+Maintain verified Telugu links in `src/assets/data/watch-links.json`. Each entry contains `movieId`, `platform`, `language`, `url`, `sourceUrl`, `checkedAt` and optional `note`. Legacy catalogue IDs map only to an exact movie title and year. Check Telugu audio on the provider's actual full-movie page before adding a link. Do not infer audio language from TMDB provider listings. Supported platforms: YouTube, Netflix, Prime, JioHotstar, ZEE5, aha and Sun NXT. These manually checked links are a snapshot and may change.
+
+## Hosting
+
+GitHub Pages can host the Angular files, but cannot run the secret-bearing API. Deploy `backend/worker.ts` to Cloudflare Workers using `npm run api:deploy`, store `TMDB_READ_TOKEN` using Wrangler secrets, and configure `ALLOWED_ORIGINS`. Set the GitHub Actions variable `MOVIE_API_URL` to the public Worker HTTPS URL ending in `/api`. Never put the token in frontend assets or GitHub Pages variables. Without an API URL, recommendations display a configuration error.
+
+Pushing main triggers `.github/workflows/deploy-pages.yml`. Tests and builds run, but the deployment job is skipped until the `MOVIE_API_URL` repository Actions variable is set. This keeps the existing hosted version available while the API is prepared. After setting the URL, rerun the workflow to publish the API-backed version. To prepare Pages output locally:
 
 ```sh
 npm run build -- --base-href /bored-guess-the-movie/
 node scripts/prepare-pages.cjs
 ```
 
-The preparation script adds entry points for `/start`, `/questions`, `/recommendation`, `/game`, and `/result`, plus a 404 fallback. This supports direct visits and refreshes on Pages without changing the application's clean routes. The deployment job uses GitHub's short-lived workflow token; no personal access token is stored in the project.
+Direct routes are prepared for `/start`, `/questions`, `/recommendation`, `/game`, and `/result`. State lives in memory; refreshing returns to Start. Before public release, add an approved TMDB logo alongside the attribution notice, following [TMDB attribution guidance](https://www.themoviedb.org/about/logos-attribution). Third-party media retain their original rights.
 
-## How it works
+## Structure
 
-After the questionnaire, the recommendation screen asks **Do you wanna guess the movie?** with a play button and **Skip** underneath. Skip opens details for the same selected movie. Viewing details skips the game entirely and displays a neutral recommendation heading. Another recommendation in this mode also opens details directly. During a game, **Show movie details** ends the guessing round without recording a loss.
+- `src/app/core/models`: typed data, hint and OCR policies
+- `src/app/core/services`: API recommendations, scene screening, signals and OTT links
+- `src/app/features`: start, questionnaire, recommendation, game and result
+- `src/app/shared/components`: reusable UI and media components
+- `backend`: server-only TMDB proxy and local adapter
 
+Unit tests use fake upstream responses to verify filtering, API-only behavior, repeat avoidance, photo gating, OCR decisions and game state. They do not establish live availability or perfect OCR accuracy.
 
-Five config-driven single-select questions lead to a recommendation. Era is a strict filter: only movies from the selected era can be picked. Within that era, mood and genre matches earn three points each; company and runtime earn one each. There is no favourite-hero question or hero-based scoring. Neutral answers award no points. The service chooses randomly among the top-scoring eligible movies and falls back to a random movie within the selected era when every score is zero. “Get another recommendation” preserves the era and other answers and excludes the previous movie when another movie exists in that era; if only one exists, it repeats that movie rather than selecting outside the era. An era with no movies returns an explicit error.
+## Exhaustive option checks
 
-The game accepts any nonempty title, suggests up to five matching catalogue titles, and compares titles after removing punctuation and spaces and folding case. Duplicate wrong guesses cost no attempts. Each wrong answer unlocks a different scene photo plus a text clue. The **Skip hint** button sits beside **Guess movie**, including on mobile. It consumes one attempt and advances to the next image/audio/text clue, even with an empty answer. Skips appear separately in the turn history. Five wrong guesses and/or skips end the game. A correct guess triggers the result and confetti; reduced-motion settings disable animations.
+`npm test` includes `tests/questionnaire-matrix.test.ts`. It derives all 1,440 answer combinations from the actual question configuration, verifies independent scoring and era expectations, and exercises 28,800 controlled game paths (1–5 approved photos, wrong guesses, skips, mixed turns and final-photo wins). It also checks API failures, missing images and optional reveal. These use controlled responses and do not certify real-world image availability or OCR accuracy.
 
-## Add questions
-
-Edit `src/app/core/models/questions.data.ts`. Its typed array determines order, options and progress automatically. To make a new question affect recommendations, add the matching rule in `core/services/recommendation.ts` and any new movie metadata in `core/models/movie.ts`. Era boundaries are before 2000, 2000–2010 inclusive, 2011–2020 inclusive, and 2021 onward.
-
-## Add movies and media
-
-Edit `src/assets/data/movies.json`. Every entry needs a unique numeric `id`, `title`, `year`, `genres`, `moods`, `company`, `runtimeMinutes`, `hero`, `director`, `posterUrl`, five distinct `hintImages`, and `description`. `hintAudioUrl` is optional. Use option values matching the questionnaire exactly. Paths such as `assets/images/my-clue.svg` refer to files under `src/assets/`.
-
-The catalogue uses five different online movie scene photos per film, curated from film galleries, reviews and movie image providers. `src/assets/data/scene-images.json` records each photo URL and its source page. The game shuffles the five photos once per round, shows the full selected photo without zooming or poster cropping, and advances to a new photo after each wrong guess. The full poster appears only on the result screen. Scene source links and the Wikipedia poster source are listed after the reveal. No media files need to be stored in assets. These third-party images retain their original rights; a source link is not a license grant.
-
-Images load directly over HTTPS. If a host is unavailable, offline, rate-limited or blocks embedding, the image component switches to the original local illustrated clue/poster. To change scenes, edit `scene-images.json` and run `node scripts/link-scene-images.cjs`; provide five different direct image URLs for each movie. Image URLs must return image bytes, rather than a search result or web page.
-
-For audio, set `hintAudioUrl` to a direct HTTPS MP3, OGG or WAV URL, or a local clip. YouTube/Spotify page URLs cannot be played by an HTML audio element; they need their respective embedded players. No remote movie audio has been assigned because a verified playable clip is required. On odd-numbered wrong guesses the game switches to a native audio player; on other turns it shows a picture. `assets/audio/placeholder-chime.wav` is an original synthesized test sound, deliberately unassigned because it does not identify a film.
-
-`node scripts/generate-assets.cjs` recreates the sample catalogue, 120 SVGs and test chime. It overwrites sample data, including online URLs. Run `node scripts/link-online-media.cjs` afterward to restore online poster links, then `node scripts/link-scene-images.cjs` to restore the curated scene photos. The poster-linking script never replaces scene hints. The latter retrieves only metadata, reuses already linked entries, and makes requests sequentially with a delay. Hosts may still rate-limit requests; retry later if that happens.
-
-## Layout
-
-```
-src/app/core/models         Typed movies, answers, question configuration
-src/app/core/services       Scoring, movie catalogue, signal game state
-src/app/features/start      Welcome
-src/app/features/questionnaire
-src/app/features/game
-src/app/features/result
-src/app/shared/components   Reusable step label
-src/assets                  Local data, images and audio
-```
-
-Scoring, boundaries, random selection constraints, normalization, catalogue paths and bundled fallback assets are verified by `npm test`. Live third-party availability is not guaranteed by offline tests.
-
-To check remote image availability without saving image files, run `node scripts/check-scene-links.cjs`. It verifies response status and image content type, uses a normal image request if a host rejects HEAD, and caches successful checks in an ignored report. Delete that report to recheck all URLs. Third-party URLs may change or become unavailable later.
+With Angular and the real API running locally, `npm run test:live` requests all 72 distinct era/genre/runtime filter combinations. Requests are paced below the local API limit. Its ignored `.angular/live-option-check.json` records status, era validation, exact genre/runtime matches and raw scene availability. Mood and company do not add API query combinations; their local scoring is covered exhaustively by the matrix tests. Live results are a snapshot, not a guarantee about future TMDB data or every browser.

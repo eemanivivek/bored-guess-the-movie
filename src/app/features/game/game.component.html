@@ -1,26 +1,21 @@
 <section class="game screen narrow">
  <app-step-label text="LIGHTS. CAMERA. TAKE A GUESS." />
  <div class="game-heading">
-  <div><h1>Know this movie?</h1><p class="lead">One mystery movie. Five chances. You’ve got this.</p></div>
+  <div><h1>Know this movie?</h1><p class="lead">{{sceneCount()}} {{sceneCount() === 1 ? 'photo' : 'photos'}}. {{maxAttempts()}} {{maxAttempts() === 1 ? 'chance' : 'chances'}}. You’ve got this.</p></div>
   <div class="lives" aria-label="Attempts remaining">
-   <span>{{state.attempts()}} / {{maxAttempts}} attempts left</span>
-   <div>@for(n of hearts; track n) { <span [class.lost]="n > state.attempts()" aria-hidden="true">♥</span> }</div>
+   <span>{{state.attempts()}} / {{maxAttempts()}} attempts left</span>
+   <div>@for(n of hearts(); track n) { <span [class.lost]="n > state.attempts()" aria-hidden="true">♥</span> }</div>
   </div>
  </div>
  <div class="hint-frame">
-  @if(audioMode()) {
-   <div class="audio-hint"><span>♫</span><p>Listen closely…</p><audio controls [src]="movie().hintAudioUrl">Audio playback is unavailable.</audio></div>
+  @let current = hint();
+  @if(current.kind === 'image') {
+   <app-media-image [src]="current.src" [fallback]="fallbackHint" [sceneOnly]="true" fit="contain" alt="Movie scene clue" />
   } @else {
-   <app-media-image [src]="movie().hintImages[frameIndex()]" [fallback]="fallbackHint()" fit="contain" alt="Movie picture clue" />
+   <div class="scene-unavailable" role="status"><p>Scene photos aren’t ready for this round.</p><button class="button outline" (click)="prepareScenes()">Load scene photos ↻</button></div>
   }
-  <span class="frame-badge">HINT {{currentHint()}} OF {{maxAttempts}}</span>
-  <span class="frame-label">{{audioMode() ? 'THE SOUND CHECK' : 'MOVIE SCENE · ' + (frameIndex()+1) + ' OF ' + maxAttempts}}</span>
- </div>
- <div class="clues" aria-live="polite">
-  @if(state.turns().length > 0) { <span>📅 {{movie().year}}</span> }
-  @if(state.turns().length > 1) { <span>⭐ {{movie().hero}}</span> }
-  @if(state.turns().length > 2) { <span>🎬 {{movie().genres.join(' / ')}}</span> }
-  @if(state.turns().length > 3) { <span>📣 Directed by {{movie().director}}</span> }
+  <span class="frame-badge">PHOTO {{currentHint()}} OF {{sceneCount()}}</span>
+  @if(current.kind === 'image'){<span class="frame-label">MOVIE SCENE · {{current.index+1}} OF {{sceneCount()}}</span>}
  </div>
  <form (ngSubmit)="submit()">
   <label for="guess">Your best guess</label>
@@ -37,7 +32,7 @@
    </div>
   }
   <p class="input-help">Spaces and punctuation don’t count. Movie knowledge does.</p>
-  <p class="input-help" id="skip-help">Skipping uses one attempt.</p>
+  <p class="input-help" id="skip-help">Skipping uses one attempt. On the final photo, it reveals your movie.</p>
   <p class="feedback" id="guess-message" aria-live="polite">{{message()}}</p>
  </form>
  <div class="game-options">

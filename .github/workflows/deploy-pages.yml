@@ -26,6 +26,11 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      - run: npm run api:check
+      - name: Configure public movie API URL
+        env:
+          MOVIE_API_URL: ${{ vars.MOVIE_API_URL }}
+        run: node scripts/configure-api.cjs
       - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v5
@@ -41,6 +46,7 @@ jobs:
           path: dist/bored-guess-the-movie/browser
 
   deploy:
+    if: ${{ vars.MOVIE_API_URL != '' }}
     needs: build
     runs-on: ubuntu-latest
     permissions:

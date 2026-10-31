@@ -42,3 +42,21 @@ test('revealing midway preserves turn history and a new recommendation resets th
 test('skip and reveal are ignored without a movie',()=>{
  const state=new GameStateService();assert.equal(state.skip(),false);assert.equal(state.reveal(),false);assert.equal(state.attempts(),5);
 });
+
+test('approved scene count determines attempts and every turn advances or finishes the round',()=>{
+ for(let count=1;count<=5;count++){
+  const photos=Array.from({length:count},(_,i)=>`https://image.tmdb.org/t/p/w1280/scene${i}.jpg`);
+  const movie={...data[0],id:-123,tmdbId:123,source:'tmdb' as const,hintImages:photos,screenedHintImages:photos};
+  const state=new GameStateService();state.start(movie);
+  assert.equal(state.maxAttempts(),count);assert.equal(state.attempts(),count);
+  for(let i=0;i<count;i++){
+   if(i%2===0)assert.equal(state.skip(),true);
+   else assert.equal(state.guess('Wrong '+i),'wrong');
+   assert.equal(state.attempts(),count-i-1);assert.equal(state.finished(),i===count-1);
+  }
+  assert.equal(state.skip(),false);assert.equal(state.guess('Extra'),'empty');
+  state.start({...movie,hintImages:[photos[0]],screenedHintImages:[photos[0]]});
+  assert.equal(state.maxAttempts(),1);assert.equal(state.attempts(),1);assert.equal(state.finished(),false);
+  assert.equal(state.guess(movie.title),'correct');assert.equal(state.won(),true);
+ }
+});

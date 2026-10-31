@@ -1,0 +1,1369 @@
+{
+  "checkedAt": "2026-10-31T09:47:18.449Z",
+  "scope": "Live API metadata and raw scene availability; no exhaustive image OCR or browser navigation",
+  "total": 72,
+  "passed": 72,
+  "failed": 0,
+  "results": [
+    {
+      "era": "Classic (before 2000)",
+      "genre": "Action",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 0,
+      "sceneCandidates": 0,
+      "titles": [
+        "Chanakya Shapadham",
+        "Katakatala Rudrayya",
+        "Veguchukka Pagatichukka",
+        "One by Two",
+        "Puli",
+        "Yuddham"
+      ],
+      "elapsedMs": 2011
+    },
+    {
+      "era": "Classic (before 2000)",
+      "genre": "Action",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 1,
+      "titles": [
+        "Nirnayam",
+        "Circus Ramudu",
+        "Hello Brother",
+        "Ashoka Chakravarthy",
+        "Seetharama Raju",
+        "Raja Makutam"
+      ],
+      "elapsedMs": 844
+    },
+    {
+      "era": "Classic (before 2000)",
+      "genre": "Action",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 0,
+      "titles": [
+        "Iddaru Asadhyule",
+        "Jamadagni",
+        "Varasudu",
+        "Gudachari 117",
+        "Jagath Kantrilu",
+        "Veguchukka Pagatichukka"
+      ],
+      "elapsedMs": 1071
+    },
+    {
+      "era": "Classic (before 2000)",
+      "genre": "Comedy",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 1,
+      "sceneCandidates": 1,
+      "titles": [
+        "Ish Gup Chup",
+        "Little Soldiers",
+        "Seethapathi Samsaram",
+        "Thrimoorthulu",
+        "Tiruguleni Manishi",
+        "Mugguru Monagallu"
+      ],
+      "elapsedMs": 1103
+    },
+    {
+      "era": "Classic (before 2000)",
+      "genre": "Comedy",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 0,
+      "titles": [
+        "Donga Mogudu",
+        "Kishkinda Kaanda",
+        "Jayammu Nischayammu Raa!",
+        "Kannayya Kittayya",
+        "Premaku Velayera",
+        "Parugo Parugu"
+      ],
+      "elapsedMs": 1250
+    },
+    {
+      "era": "Classic (before 2000)",
+      "genre": "Comedy",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 0,
+      "titles": [
+        "Ish Gup Chup",
+        "Seetharama Kalyanam",
+        "Bamma Maata Bangaru Baata",
+        "Dammit Katha Addam Thirigindi",
+        "Donga Mogudu",
+        "Dabbevariki Chedu"
+      ],
+      "elapsedMs": 1283
+    },
+    {
+      "era": "Classic (before 2000)",
+      "genre": "Romance",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 0,
+      "sceneCandidates": 0,
+      "titles": [
+        "Poola Pallaki",
+        "Thrimoorthulu",
+        "Pavitra Prema",
+        "Mangamma Gari Manavadu",
+        "Asthulu Anthasthulu",
+        "Janaki Ramudu"
+      ],
+      "elapsedMs": 1099
+    },
+    {
+      "era": "Classic (before 2000)",
+      "genre": "Romance",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 5,
+      "sceneCandidates": 1,
+      "titles": [
+        "Premante Ideraa",
+        "Swara Kalpana",
+        "Gopala Rao Gari Abbayi",
+        "Egire Paavurama",
+        "Rajakumar",
+        "Omkaram"
+      ],
+      "elapsedMs": 811
+    },
+    {
+      "era": "Classic (before 2000)",
+      "genre": "Romance",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 1,
+      "titles": [
+        "Sagara Sangamam",
+        "Asthulu Anthasthulu",
+        "Premante Ideraa",
+        "Janaki Ramudu",
+        "Aunty",
+        "Aradhana"
+      ],
+      "elapsedMs": 1079
+    },
+    {
+      "era": "Classic (before 2000)",
+      "genre": "Family",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 2,
+      "sceneCandidates": 1,
+      "titles": [
+        "Babai Hotel",
+        "Mayadari Malligadu",
+        "Nari Nari Naduma Murari",
+        "Veguchukka Pagatichukka",
+        "Nomu",
+        "Mogudu Kaavali"
+      ],
+      "elapsedMs": 1091
+    },
+    {
+      "era": "Classic (before 2000)",
+      "genre": "Family",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 0,
+      "titles": [
+        "Balaraju",
+        "Family",
+        "Ninne Pelladatha",
+        "Gorantha Deepam",
+        "Pandaga",
+        "Dagudumuthala Dampathyam"
+      ],
+      "elapsedMs": 1198
+    },
+    {
+      "era": "Classic (before 2000)",
+      "genre": "Family",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 0,
+      "titles": [
+        "Idem Pellam Baboi",
+        "Maga Maharaju",
+        "Lava Kusa",
+        "Aaptha Mithrulu",
+        "Mayalodu",
+        "Pandaga"
+      ],
+      "elapsedMs": 538
+    },
+    {
+      "era": "Classic (before 2000)",
+      "genre": "Thriller",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 2,
+      "sceneCandidates": 1,
+      "titles": [
+        "Aaro Pranam",
+        "Anthima Theerpu",
+        "Chakravyuham",
+        "Billa Ranga",
+        "Madhura Nagarilo",
+        "Little Soldiers"
+      ],
+      "elapsedMs": 1133
+    },
+    {
+      "era": "Classic (before 2000)",
+      "genre": "Thriller",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 1,
+      "titles": [
+        "Paape Naa Pranam",
+        "Rudranetra",
+        "Rajamahal",
+        "Mayalodu",
+        "Chettu Kinda Pleader",
+        "Keechurallu"
+      ],
+      "elapsedMs": 1085
+    },
+    {
+      "era": "Classic (before 2000)",
+      "genre": "Thriller",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 1,
+      "titles": [
+        "Darja Donga",
+        "Aame Evaru?",
+        "Ave Kallu",
+        "Choodalani Vundi",
+        "Zamindar",
+        "Gudachari 117"
+      ],
+      "elapsedMs": 792
+    },
+    {
+      "era": "Classic (before 2000)",
+      "genre": "Fantasy",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 5,
+      "exactGenreAndRuntime": 0,
+      "sceneCandidates": 0,
+      "titles": [
+        "Devi",
+        "Shivakanya",
+        "Bala Nagamma",
+        "Sati Savitri",
+        "Sri Krishnarjuna Yuddhamu"
+      ],
+      "elapsedMs": 796
+    },
+    {
+      "era": "Classic (before 2000)",
+      "genre": "Fantasy",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 3,
+      "titles": [
+        "Ammoru",
+        "Lava Kusa",
+        "Guruvunu Minchina Sishyudu",
+        "Daiva Balam",
+        "Yamaleela",
+        "Muthyamantha Muddhu"
+      ],
+      "elapsedMs": 1077
+    },
+    {
+      "era": "Classic (before 2000)",
+      "genre": "Fantasy",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 3,
+      "titles": [
+        "Aakasa Ramanna",
+        "Gunasundari Katha",
+        "Superman",
+        "Devi",
+        "Ghatotkachudu",
+        "Jambalakidi Pamba"
+      ],
+      "elapsedMs": 1112
+    },
+    {
+      "era": "2000-2010",
+      "genre": "Action",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 1,
+      "sceneCandidates": 1,
+      "titles": [
+        "Victory",
+        "Eenadu",
+        "Rakshak: The Protector",
+        "Sadhyam",
+        "Inspector",
+        "Evadaithe Nakenti"
+      ],
+      "elapsedMs": 900
+    },
+    {
+      "era": "2000-2010",
+      "genre": "Action",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 3,
+      "titles": [
+        "Neninthe",
+        "Gemeni",
+        "Kalyan Ram Kathi",
+        "Jai",
+        "Raghavendra",
+        "Aadi"
+      ],
+      "elapsedMs": 1059
+    },
+    {
+      "era": "2000-2010",
+      "genre": "Action",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 3,
+      "titles": [
+        "Adhurs",
+        "Simha",
+        "Desamuduru",
+        "Josh",
+        "Magadheera",
+        "Homam"
+      ],
+      "elapsedMs": 1115
+    },
+    {
+      "era": "2000-2010",
+      "genre": "Comedy",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 1,
+      "sceneCandidates": 1,
+      "titles": [
+        "Masth",
+        "Rambabu Gadi Pellam",
+        "Sadhyam",
+        "Veedekkadi Mogudandi...!",
+        "Rangupaduddi",
+        "Goppinti Alludu"
+      ],
+      "elapsedMs": 1792
+    },
+    {
+      "era": "2000-2010",
+      "genre": "Comedy",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 1,
+      "titles": [
+        "Andagadu",
+        "Athili Sathibabu LKG",
+        "Gopi – Goda Meeda Pilli",
+        "Happy",
+        "Budget Padmanabham",
+        "Bommana Brothers Chandana Sisters"
+      ],
+      "elapsedMs": 1102
+    },
+    {
+      "era": "2000-2010",
+      "genre": "Comedy",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 2,
+      "titles": [
+        "Happy",
+        "Pellam Oorelithe",
+        "Student No. 1",
+        "Nenu Pelliki Ready",
+        "Aakasa Ramanna",
+        "Jai"
+      ],
+      "elapsedMs": 1114
+    },
+    {
+      "era": "2000-2010",
+      "genre": "Romance",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 2,
+      "sceneCandidates": 1,
+      "titles": [
+        "Meenakshi",
+        "Hello Premistara",
+        "Bhalevadivi Basu",
+        "Mogudu Pellam O Dongodu",
+        "Happy Happy Ga",
+        "Dhana 51"
+      ],
+      "elapsedMs": 1103
+    },
+    {
+      "era": "2000-2010",
+      "genre": "Romance",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 2,
+      "titles": [
+        "Anandamanandamaye",
+        "Chirutha",
+        "Desamuduru",
+        "Bumper Offer",
+        "Evadi Gola Vadide",
+        "Vaana"
+      ],
+      "elapsedMs": 1267
+    },
+    {
+      "era": "2000-2010",
+      "genre": "Romance",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 2,
+      "titles": [
+        "Samba",
+        "Janaki Weds Sriram",
+        "Avakai Biryani",
+        "Desamuduru",
+        "Kabaddi Kabaddi",
+        "Avunanna Kadanna"
+      ],
+      "elapsedMs": 1163
+    },
+    {
+      "era": "2000-2010",
+      "genre": "Family",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 4,
+      "exactGenreAndRuntime": 1,
+      "sceneCandidates": 0,
+      "titles": [
+        "Maa Nanna Chiranjeevi",
+        "Pandanti Samsaram",
+        "Goppinti Alludu",
+        "Manasunna Maraju"
+      ],
+      "elapsedMs": 805
+    },
+    {
+      "era": "2000-2010",
+      "genre": "Family",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 3,
+      "titles": [
+        "Jayam Manadera",
+        "Thulasi",
+        "Avakai Biryani",
+        "Nuvvu Naaku Nachav",
+        "Nuvvu Vasthavani",
+        "Sankranthi"
+      ],
+      "elapsedMs": 1026
+    },
+    {
+      "era": "2000-2010",
+      "genre": "Family",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 1,
+      "titles": [
+        "Vasantham",
+        "Nee Sneham",
+        "Kotha Bangaru Lokam",
+        "Naani",
+        "Maa Annayya",
+        "Pandanti Samsaram"
+      ],
+      "elapsedMs": 1076
+    },
+    {
+      "era": "2000-2010",
+      "genre": "Thriller",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 3,
+      "sceneCandidates": 0,
+      "titles": [
+        "Rakshak: The Protector",
+        "IPS Jhansi",
+        "Eenadu",
+        "Raksha",
+        "Amaravathi",
+        "Madhayanam Hathya"
+      ],
+      "elapsedMs": 807
+    },
+    {
+      "era": "2000-2010",
+      "genre": "Thriller",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 3,
+      "titles": [
+        "Nenu Meeku Telusa...?",
+        "Gharshana",
+        "Arundhati",
+        "Golimaar",
+        "Hare Ram",
+        "Satyameva Jeyate"
+      ],
+      "elapsedMs": 848
+    },
+    {
+      "era": "2000-2010",
+      "genre": "Thriller",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 3,
+      "titles": [
+        "Kick",
+        "Athadu",
+        "Anasuya",
+        "Roommates",
+        "Souryam",
+        "Photo"
+      ],
+      "elapsedMs": 1084
+    },
+    {
+      "era": "2000-2010",
+      "genre": "Fantasy",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 1,
+      "exactGenreAndRuntime": 1,
+      "sceneCandidates": 1,
+      "titles": [
+        "Panchakshari"
+      ],
+      "elapsedMs": 550
+    },
+    {
+      "era": "2000-2010",
+      "genre": "Fantasy",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 5,
+      "titles": [
+        "Punnami Nagu",
+        "Khaleja",
+        "Nagavalli",
+        "Devi Putrudu",
+        "Arundhati",
+        "Naani"
+      ],
+      "elapsedMs": 1087
+    },
+    {
+      "era": "2000-2010",
+      "genre": "Fantasy",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 5,
+      "titles": [
+        "Devi Putrudu",
+        "Nagavalli",
+        "Yamadonga",
+        "Arundhati",
+        "Panchakshari",
+        "Pilisthe Palukutha"
+      ],
+      "elapsedMs": 780
+    },
+    {
+      "era": "2010-2020",
+      "genre": "Action",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 3,
+      "sceneCandidates": 2,
+      "titles": [
+        "Mister 420",
+        "Nenorakam",
+        "Luckunnodu",
+        "Voter",
+        "Bet",
+        "Show Time"
+      ],
+      "elapsedMs": 1320
+    },
+    {
+      "era": "2010-2020",
+      "genre": "Action",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 4,
+      "titles": [
+        "Naayak",
+        "Janda Pai Kapiraju",
+        "Adhinayakudu",
+        "The Ghazi Attack",
+        "Bāhubali: The Beginning",
+        "Darshakudu"
+      ],
+      "elapsedMs": 1076
+    },
+    {
+      "era": "2010-2020",
+      "genre": "Action",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 4,
+      "titles": [
+        "PSV Garuda Vega",
+        "Bāhubali: The Beginning",
+        "Bāhubali 2: The Conclusion",
+        "Pataas",
+        "Rowdy Fellow",
+        "Tippu"
+      ],
+      "elapsedMs": 821
+    },
+    {
+      "era": "2010-2020",
+      "genre": "Comedy",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 4,
+      "sceneCandidates": 5,
+      "titles": [
+        "Sher",
+        "Tommy",
+        "Maa Vintha Gaadha Vinuma",
+        "Run",
+        "Nuvvala Nenila",
+        "Lacchimdeviki O Lekkundi"
+      ],
+      "elapsedMs": 812
+    },
+    {
+      "era": "2010-2020",
+      "genre": "Comedy",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 5,
+      "titles": [
+        "Raja the Great",
+        "F2: Fun and Frustration",
+        "Julayi",
+        "Malligadu Marriage Bureau",
+        "Pataas",
+        "A Aa"
+      ],
+      "elapsedMs": 1125
+    },
+    {
+      "era": "2010-2020",
+      "genre": "Comedy",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 4,
+      "titles": [
+        "F2: Fun and Frustration",
+        "Tenali Ramakrishna BA.BL",
+        "Ala Ela",
+        "Pataas",
+        "Rangula Ratnam",
+        "A Aa"
+      ],
+      "elapsedMs": 836
+    },
+    {
+      "era": "2010-2020",
+      "genre": "Romance",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 2,
+      "sceneCandidates": 3,
+      "titles": [
+        "Chikati Gadilo Chithakotudu",
+        "Sher",
+        "Kathalo Rajakumari",
+        "Guppedantha Prema",
+        "Prema ishq kaadhal",
+        "Chandrullo Unde Kundelu"
+      ],
+      "elapsedMs": 1354
+    },
+    {
+      "era": "2010-2020",
+      "genre": "Romance",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 5,
+      "titles": [
+        "London Babulu",
+        "Dear Comrade",
+        "Malligadu Marriage Bureau",
+        "Raja Meeru Keka",
+        "Savaari",
+        "RX 100"
+      ],
+      "elapsedMs": 1121
+    },
+    {
+      "era": "2010-2020",
+      "genre": "Romance",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 4,
+      "titles": [
+        "Rough",
+        "Vareva",
+        "Shankara",
+        "Thikka",
+        "Rangula Ratnam",
+        "Mr. Perfect"
+      ],
+      "elapsedMs": 1093
+    },
+    {
+      "era": "2010-2020",
+      "genre": "Family",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 4,
+      "sceneCandidates": 1,
+      "titles": [
+        "TEARS of AaMIN",
+        "Chandrullo Unde Kundelu",
+        "A House of Time Traps",
+        "Greedy Boy 'n' Magical Cap",
+        "Mithunam",
+        "Brave Spirit"
+      ],
+      "elapsedMs": 815
+    },
+    {
+      "era": "2010-2020",
+      "genre": "Family",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 5,
+      "titles": [
+        "Red Bus",
+        "Once Upon a Warrior",
+        "Gayatri",
+        "Rangula Ratnam",
+        "Tadakha",
+        "Chal Mohan Ranga"
+      ],
+      "elapsedMs": 1069
+    },
+    {
+      "era": "2010-2020",
+      "genre": "Family",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 6,
+      "titles": [
+        "Voter",
+        "Galipatam",
+        "Gayatri",
+        "Tadakha",
+        "Rangula Ratnam",
+        "Rarandoi Veduka Chudham"
+      ],
+      "elapsedMs": 784
+    },
+    {
+      "era": "2010-2020",
+      "genre": "Thriller",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 5,
+      "sceneCandidates": 3,
+      "titles": [
+        "Dongala Mutha",
+        "Anukshanam",
+        "Dookudu",
+        "Nenu Lenu",
+        "Gatham",
+        "Run"
+      ],
+      "elapsedMs": 1383
+    },
+    {
+      "era": "2010-2020",
+      "genre": "Thriller",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 5,
+      "titles": [
+        "Manamantha",
+        "Drushyam",
+        "Dirty Hari",
+        "Ko Antey Koti",
+        "Nene Raju Nene Mantri",
+        "Brochevarevarura"
+      ],
+      "elapsedMs": 1063
+    },
+    {
+      "era": "2010-2020",
+      "genre": "Thriller",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 6,
+      "titles": [
+        "Veera Bhoga Vasantha Rayalu",
+        "Oosaravelli",
+        "Manu",
+        "Dookudu",
+        "LIE",
+        "Subramanyapuram"
+      ],
+      "elapsedMs": 1088
+    },
+    {
+      "era": "2010-2020",
+      "genre": "Fantasy",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 5,
+      "sceneCandidates": 1,
+      "titles": [
+        "Time Robber",
+        "Brave Spirit",
+        "Cheema Prema Madhyalo Bhama",
+        "TEARS of AaMIN",
+        "Maha Bhaktha Siriyala",
+        "Narthanasala"
+      ],
+      "elapsedMs": 842
+    },
+    {
+      "era": "2010-2020",
+      "genre": "Fantasy",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 4,
+      "titles": [
+        "Angel",
+        "Daruvu",
+        "Manam",
+        "Avatharam",
+        "Damarukam",
+        "Saakshyam"
+      ],
+      "elapsedMs": 1075
+    },
+    {
+      "era": "2010-2020",
+      "genre": "Fantasy",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 5,
+      "titles": [
+        "Soggade Chinni Nayana",
+        "Manam",
+        "Once Upon a Warrior",
+        "Pedavi Datani Matokatundhi",
+        "Saakshyam",
+        "Narthanasala"
+      ],
+      "elapsedMs": 810
+    },
+    {
+      "era": "Recent",
+      "genre": "Action",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 2,
+      "sceneCandidates": 4,
+      "titles": [
+        "Manu Charitra",
+        "Pushpa: The Rise",
+        "Sri Sri Sri Raja Vaaru",
+        "Mangampeta",
+        "Sivudu",
+        "Double Barrel"
+      ],
+      "elapsedMs": 1577
+    },
+    {
+      "era": "Recent",
+      "genre": "Action",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 6,
+      "titles": [
+        "Irumudi",
+        "Maa Inti Bangaram",
+        "Comrade Kalyan",
+        "Saripodhaa Sanivaaram",
+        "Pushpa: The Rise",
+        "Anakapalli"
+      ],
+      "elapsedMs": 869
+    },
+    {
+      "era": "Recent",
+      "genre": "Action",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 6,
+      "titles": [
+        "Lenin",
+        "Irumudi",
+        "RRR",
+        "Comrade Kalyan",
+        "Bāhubali: The Epic",
+        "Devara: Part 1"
+      ],
+      "elapsedMs": 693
+    },
+    {
+      "era": "Recent",
+      "genre": "Comedy",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 4,
+      "sceneCandidates": 5,
+      "titles": [
+        "#MayaLo",
+        "Richie Gadi Pelli",
+        "Lechindi Mahila Lokam",
+        "Dongamohan",
+        "OMG: O Manchi Ghost",
+        "14 Days (Girlfriend Intlo)"
+      ],
+      "elapsedMs": 1363
+    },
+    {
+      "era": "Recent",
+      "genre": "Comedy",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 5,
+      "titles": [
+        "Gaayapadda Simham",
+        "Funky",
+        "Vishnu Vinyasam",
+        "Godari Gattupaina",
+        "#Single",
+        "Surya"
+      ],
+      "elapsedMs": 845
+    },
+    {
+      "era": "Recent",
+      "genre": "Comedy",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 4,
+      "titles": [
+        "Narayana & Co",
+        "Summer Holidays",
+        "Romanchakam",
+        "Korean Kanakaraju",
+        "The Rajasaab",
+        "Jetlee"
+      ],
+      "elapsedMs": 1164
+    },
+    {
+      "era": "Recent",
+      "genre": "Romance",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 3,
+      "sceneCandidates": 5,
+      "titles": [
+        "Dharmavaram",
+        "Couple Friendly",
+        "Manu Charitra",
+        "#MayaLo",
+        "VISA - Vintara Saradaga",
+        "Raju Yadav"
+      ],
+      "elapsedMs": 808
+    },
+    {
+      "era": "Recent",
+      "genre": "Romance",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 5,
+      "titles": [
+        "Adbhutham",
+        "Sahaa - Life of Sanju",
+        "Uppena",
+        "Little Hearts",
+        "F3: Fun and Frustration",
+        "Laila"
+      ],
+      "elapsedMs": 1806
+    },
+    {
+      "era": "Recent",
+      "genre": "Romance",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 6,
+      "titles": [
+        "Beauty",
+        "Godari Gattupaina",
+        "Chennai Love Story",
+        "Hi Nanna",
+        "Liger",
+        "Court: State vs. A Nobody"
+      ],
+      "elapsedMs": 718
+    },
+    {
+      "era": "Recent",
+      "genre": "Family",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 5,
+      "sceneCandidates": 3,
+      "titles": [
+        "Nuvvu Nenu",
+        "Children of WONDERS : A Song of Two Birds",
+        "Shashtipoorti",
+        "Fear",
+        "Kallu Compound 1995",
+        "Forever (Telugu)"
+      ],
+      "elapsedMs": 843
+    },
+    {
+      "era": "Recent",
+      "genre": "Family",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 5,
+      "titles": [
+        "Chalo Premiddam",
+        "Oka Manchi Prema Katha",
+        "Premadesam",
+        "Ante... Sundaraniki!",
+        "Summer Holidays",
+        "Sridevi Shoban Babu"
+      ],
+      "elapsedMs": 784
+    },
+    {
+      "era": "Recent",
+      "genre": "Family",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 5,
+      "titles": [
+        "Under the Garden",
+        "Hi Nanna",
+        "Ante... Sundaraniki!",
+        "Suyodhana",
+        "Premadesam",
+        "Hide and Seek"
+      ],
+      "elapsedMs": 1056
+    },
+    {
+      "era": "Recent",
+      "genre": "Thriller",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 3,
+      "sceneCandidates": 6,
+      "titles": [
+        "Black Rose",
+        "Paramapadha Sopanam",
+        "Ravana Lanka",
+        "Gamblers",
+        "Bharathanatyam",
+        "Kota Bommali PS"
+      ],
+      "elapsedMs": 1687
+    },
+    {
+      "era": "Recent",
+      "genre": "Thriller",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 6,
+      "titles": [
+        "Sebastian P.C. 524",
+        "Dacoit",
+        "#Cult",
+        "Nindha",
+        "Pushpa: The Rise",
+        "Maa Inti Bangaram"
+      ],
+      "elapsedMs": 2422
+    },
+    {
+      "era": "Recent",
+      "genre": "Thriller",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 6,
+      "titles": [
+        "Maa Inti Bangaram",
+        "Lucky Baskhar",
+        "Paramapadha Sopanam",
+        "Irumudi",
+        "NET",
+        "Pushpa: The Rise"
+      ],
+      "elapsedMs": 1340
+    },
+    {
+      "era": "Recent",
+      "genre": "Fantasy",
+      "time": "Under 2 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 5,
+      "sceneCandidates": 3,
+      "titles": [
+        "Heads & Tales",
+        "A Goa Tripp...",
+        "Virgo",
+        "Musica of Hiem",
+        "Children of WONDERS : The Struggle of Fareeda",
+        "A Tiger Might Fly"
+      ],
+      "elapsedMs": 1031
+    },
+    {
+      "era": "Recent",
+      "genre": "Fantasy",
+      "time": "2-3 hrs",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 5,
+      "sceneCandidates": 6,
+      "titles": [
+        "Ooru Peru Bhairavakona",
+        "Mahendragiri Vaaraahi",
+        "Agadha",
+        "Nagabandham: The Secret Treasure",
+        "Bhoothaddam Bhaskar Narayana",
+        "Trikaali"
+      ],
+      "elapsedMs": 846
+    },
+    {
+      "era": "Recent",
+      "genre": "Fantasy",
+      "time": "Doesn't matter",
+      "status": 200,
+      "passed": true,
+      "movies": 6,
+      "exactGenreAndRuntime": 6,
+      "sceneCandidates": 2,
+      "titles": [
+        "Yamudu",
+        "Tantiram",
+        "Virgo",
+        "Heads & Tales",
+        "Children of WONDERS : A Song of Two Birds",
+        "Kalki 2898-AD"
+      ],
+      "elapsedMs": 789
+    }
+  ]
+}

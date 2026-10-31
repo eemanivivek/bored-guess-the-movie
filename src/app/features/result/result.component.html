@@ -7,14 +7,15 @@
  <h1>{{state.revealed() ? 'Your movie recommendation' : state.won() ? 'Congratulations! 🎉' : 'Better luck next time!'}}</h1>
  <p class="lead">{{state.revealed() ? 'Your movie night starts here. Meet the story we picked for you.' : state.won() ? 'You connected the clues. Your movie night is sorted.' : 'No need to regret, better luck next time! Meet your movie.'}}</p>
  <div class="result-card">
-  <app-media-image class="result-poster" [src]="currentMovie.posterUrl" [fallback]="'assets/images/movie-'+currentMovie.id+'-poster.svg'" [alt]="currentMovie.title+' poster'" />
+  <app-media-image class="result-poster" [src]="currentMovie.posterUrl || 'assets/images/poster-unavailable.svg'" [fallback]="currentMovie.id > 0 ? 'assets/images/movie-'+currentMovie.id+'-poster.svg' : 'assets/images/poster-unavailable.svg'" [alt]="currentMovie.title+' poster'" />
   <div>
    <span class="eyebrow">YOUR MOVIE MATCH</span><h2>{{currentMovie.title}}</h2>
-   <p class="movie-meta">{{currentMovie.year}} · {{currentMovie.runtimeMinutes}} min · {{currentMovie.genres.join(' / ')}}</p>
+   <p class="movie-meta">{{currentMovie.year}} · {{currentMovie.runtimeMinutes ? currentMovie.runtimeMinutes+' min' : 'Runtime unavailable'}} · {{currentMovie.genres.join(' / ')}}</p>
    <p>{{currentMovie.description}}</p>
    <p class="cast">Starring <b>{{currentMovie.hero}}</b><br>Directed by <b>{{currentMovie.director}}</b></p>
    <span class="match-tag">✦ Picked for your vibe</span>
-   @if(currentMovie.imageSourceUrl) { <p><a class="image-credit" [href]="currentMovie.imageSourceUrl" target="_blank" rel="noopener noreferrer">Poster source: Wikipedia ↗</a></p> }
+   <app-watch-links [movieId]="currentMovie.id" [movieTitle]="currentMovie.title" [movieYear]="currentMovie.year" />
+   @if(currentMovie.imageSourceUrl) { <p><a class="image-credit" [href]="currentMovie.imageSourceUrl" target="_blank" rel="noopener noreferrer">{{currentMovie.source === 'tmdb' ? 'Movie information and images: TMDB ↗' : 'Poster source: Wikipedia ↗'}}</a></p> }
    @if(currentMovie.hintSourceUrls?.length) {
     <details class="scene-credits"><summary>Scene image sources</summary>
      @for(source of currentMovie.hintSourceUrls; track source; let i=$index) { <a [href]="source" target="_blank" rel="noopener noreferrer">Scene source {{i+1}} ↗</a> }
@@ -24,8 +25,10 @@
  </div>
  <div class="result-actions">
   <button class="button primary" (click)="again()">{{state.revealed() ? 'Start over ↗' : 'Play again ↗'}}</button>
-  <button class="button outline" (click)="another()">Get another recommendation ↻</button>
+  <button class="button outline" [disabled]="busy()" (click)="another()">{{busy() ? 'Finding your movie…' : 'Get another recommendation ↻'}}</button>
  </div>
+ @if(busy()){<p class="input-help" role="status">Looking for your next movie night…</p>}
+ @if(error()){<p class="feedback" role="alert">{{error()}}</p>}
  <p class="input-help">Another recommendation keeps your preferences. {{state.revealed() ? 'Start over' : 'Play again'}} starts fresh.</p>
 </section>
 }
