@@ -39,3 +39,13 @@ npm run test:live
 ```
 
 Live details are recorded in `tests/reports/live-options.json`; the script also writes `.angular/live-option-check.json` on each run. These results are a snapshot of one API batch per distinct filter, not every movie in TMDB.
+
+## Local changes checked on 6 November 2026
+
+The current suite passes 65 tests. It covers all 2,100 combinations of the original five questions and 33,600 game paths using two to five checked photos. Genre now includes Doesn't matter, which chooses randomly from eligible API candidates instead of ranking by score. Single-photo games are blocked during candidate preparation, by the playable-scene route rule and when starting prepared game state. Distinct image sizes of one frame do not count as separate photos. The live API snapshot above remains the historical 31 October run; it has not been rerun for these frontend changes.
+
+Hero-specific tests separately cover all nine preset cast filters, custom aliases, actor suggestions, no-preference requests, unmatched names/casts, and game candidate selection. The custom-name space is unbounded and is not an exhaustive permutation claim.
+
+Retry regression checks verify rejected movies are not scanned again, subsequent clicks continue API pagination, exclusions drain each page, and exhaustion stops further retry requests. Era is the final question, immediately after Hero.
+
+The final Era question includes Doesn't matter, tested across recommendations, API date filters, mixed-era scene candidates, and the expanded 105-filter backend matrix.

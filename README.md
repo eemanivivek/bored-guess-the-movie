@@ -27,17 +27,17 @@ npm run build
 
 ## Recommendations and photos
 
-Recommendations come exclusively from TMDB, with `with_original_language=te`. There is no saved-JSON recommendation fallback or fixed game-title pool. API failures display a retryable error. Era is a strict filter: before 2000, 2000–2010, 2011–2020, or 2021 onward. Genre and mood score three points each; company and runtime score one. Mood/company are genre-based heuristics. Random ties and a recent-history filter improve variety among sampled API candidates.
+Recommendations come exclusively from TMDB, with `with_original_language=te`. There is no saved-JSON recommendation fallback or fixed game-title pool. API failures display a retryable error. Era is a strict filter: before 2000, 2000–2010, 2011–2020, or 2021 onward. Genre and mood score three points each; company and runtime score one. Mood/company are genre-based heuristics. Random ties and a recent-history filter improve variety among sampled API candidates. Selecting Doesn't matter for Genre bypasses weighted ranking and randomly selects an eligible API movie. The era and existing API genre/runtime discovery filters still apply.
 
 Choosing Play checks up to 24 distinct backdrops per candidate. Language-tagged artwork and the poster are excluded first. A lazy Tesseract.js worker reads actual photo pixels using English and Telugu models, rejecting detected lettering. Metadata alone is not proof of a text-free image. Automatic OCR can miss stylized or faint lettering; it is not a guarantee. Models download on first play and are browser-cached. Photos are processed locally and are not uploaded to an OCR service.
 
-A game uses one to five distinct photos that pass screening; the number of attempts and hearts equals the approved photo count. The selected API movie is retained when it has at least one approved scene. If it has none, other API movies in the same era are tried. No old JSON movie is substituted. If none pass, the app offers Try more movies or movie details. Each wrong guess or Skip hint consumes one attempt and advances to the next photo. The final wrong guess or skip opens the result immediately. The UI shows the actual photo count. There are no year, actor, genre, plot, audio or poster clues. Punctuation/spaces/case are ignored for guesses, including alternative titles. Duplicate wrong guesses cost nothing.
+A game uses two to five distinct photos that pass screening; the number of attempts and hearts equals the approved photo count. The selected API movie is retained when it has at least two approved scenes. If it has fewer, other API movies in the same era are tried. No old JSON movie is substituted. If none pass, the app offers Try more movies or movie details. Each wrong guess or Skip hint consumes one attempt and advances to the next photo. The final wrong guess or skip opens the result immediately. The UI shows the actual photo count. There are no year, actor, genre, plot, audio or poster clues. Punctuation/spaces/case are ignored for guesses, including alternative titles. Duplicate wrong guesses cost nothing.
 
 After the questionnaire, **Do you wanna guess the movie?** offers Play and Skip. Skip reveals the selected recommendation. Results show the poster, details and verified Telugu streaming links, when available. Missing links show an explanatory message.
 
 ## Questions and OTT links
 
-Edit `src/app/core/models/questions.data.ts` to change the typed questionnaire. Add scoring rules in `core/services/recommendation.ts` for new attributes.
+Edit `src/app/core/models/questions.data.ts` to change the typed questionnaire. Add scoring rules in `core/services/recommendation.ts` for new attributes. The fifth question offers nine heroes, No preference, and Other with live actor-name suggestions from `/api/heroes`. Era is the sixth and final question. The server resolves the name with TMDB person search and applies `with_cast` to Telugu discovery. Hero and era remain strict when genre/runtime preferences relax; unknown actors or no matching films produce a helpful retry message.
 
 `src/assets/data/movies.json` remains only as a legacy title/year lookup for manually verified OTT entries, and for legacy asset tooling/tests. It never selects a recommendation or supplies game photos. New movies are discovered automatically from TMDB.
 
@@ -68,8 +68,12 @@ Unit tests use fake upstream responses to verify filtering, API-only behavior, r
 
 ## Exhaustive option checks
 
-`npm test` includes `tests/questionnaire-matrix.test.ts`. It derives all 1,440 answer combinations from the actual question configuration, verifies independent scoring and era expectations, and exercises 28,800 controlled game paths (1–5 approved photos, wrong guesses, skips, mixed turns and final-photo wins). It also checks API failures, missing images and optional reveal. These use controlled responses and do not certify real-world image availability or OCR accuracy.
+`npm test` includes `tests/questionnaire-matrix.test.ts`. It derives all 2,100 combinations of mood, genre, company, time and era from the actual question configuration, verifies independent scoring and era expectations, and exercises 33,600 controlled game paths (2–5 approved photos, wrong guesses, skips, mixed turns and final-photo wins). It also checks API failures, missing images and optional reveal. These use controlled responses and do not certify real-world image availability or OCR accuracy.
 
-With Angular and the real API running locally, `npm run test:live` requests all 72 distinct era/genre/runtime filter combinations. Requests are paced below the local API limit. Its ignored `.angular/live-option-check.json` records status, era validation, exact genre/runtime matches and raw scene availability. Mood and company do not add API query combinations; their local scoring is covered exhaustively by the matrix tests. Live results are a snapshot, not a guarantee about future TMDB data or every browser.
+With Angular and the real API running locally, `npm run test:live` requests all 105 distinct era/genre/runtime filter combinations. Requests are paced below the local API limit. Its ignored `.angular/live-option-check.json` records status, era validation, exact genre/runtime matches and raw scene availability. Mood and company do not add API query combinations; their local scoring is covered exhaustively by the matrix tests. Live results are a snapshot, not a guarantee about future TMDB data or every browser.
 
 Public movie API: https://bored-guess-the-movie-api.bored-guess-the-movie.workers.dev/api. Its TMDB credential is stored as a Cloudflare Worker secret. GitHub Actions uses the public MOVIE_API_URL variable to connect the frontend.
+
+Scene retries remember rejected movies for each era/hero combination and continue through API pages. Game discovery widens genre/runtime preferences but keeps Telugu language, era and hero fixed. A completed search offers Change preferences or movie details rather than a repeat retry.
+
+Era also offers Doesn't matter. This removes release-era restrictions from recommendations and game candidate searches; other selected preferences still apply.

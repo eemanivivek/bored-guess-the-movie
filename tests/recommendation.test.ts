@@ -19,3 +19,22 @@ test('catalogue has unique movies and valid local or HTTPS media paths',()=>{ass
 
 test('scene decks have five different photos and never use the poster',()=>{for(const movie of data){assert.equal(movie.hintImageKind,'scene');assert.equal(new Set(movie.hintImages).size,5,movie.title);assert.ok(!movie.hintImages.includes(movie.posterUrl),movie.title);assert.ok(movie.hintSourceUrls.length>0);}});
 test('shuffle changes order without mutating the catalogue or repeating a scene',()=>{const original=['a','b','c','d','e'];const shuffled=shuffleHints(original,()=>0);assert.deepEqual(original,['a','b','c','d','e']);assert.notDeepEqual(shuffled,original);assert.deepEqual([...shuffled].sort(),original);assert.equal(new Set(shuffled).size,5);});
+
+test('Doesn’t matter genre picks randomly across eligible movies without genre scoring and preserves era/exclusion',()=>{
+ const high={...data[0],id:101,year:2024,moods:['Bored'],genres:["Doesn't matter"],company:['Friends'],runtimeMinutes:150};
+ const low={...high,id:102,moods:[],company:[],runtimeMinutes:190};
+ const outside={...high,id:103,year:1990};
+ const answers={mood:'Bored',genre:"Doesn't matter",company:'Friends',time:'2-3 hrs',era:'Recent'};
+ assert.equal(scoreMovie(high,answers),5,'neutral genre never earns genre points');
+ assert.equal(selectMovie([outside,high,low],answers,undefined,()=>0).id,high.id);
+ assert.equal(selectMovie([outside,high,low],answers,undefined,()=>0.999).id,low.id);
+ assert.equal(selectMovie([outside,high,low],answers,high.id,()=>0).id,low.id);
+ assert.equal(selectMovie([high],answers,high.id,()=>0).id,high.id);
+});
+
+test('any era includes all release years while preserving scoring and exclusion',()=>{
+ const classic={...data[0],id:100,year:1995,moods:['Excited'],genres:['Action']};const recent={...classic,id:101,year:2024};
+ assert.equal(selectMovie([classic,recent],{era:"Doesn't matter",genre:"Doesn't matter"},undefined,()=>0).id,100);
+ assert.equal(selectMovie([classic,recent],{era:"Doesn't matter",genre:"Doesn't matter"},undefined,()=>0.99).id,101);
+ assert.equal(selectMovie([classic,recent],{era:"Doesn't matter"},100).id,101);
+});

@@ -90,3 +90,46 @@ test('bursts are bounded and preflight returns allowed methods without requiring
  for(let i=0;i<30;i++) await api(request('/api/search?q=film'),env);
  const response=await api(request('/api/search?q=film'),env);assert.equal(response.status,429);assert.equal(response.headers.get('Retry-After'),'60');
 });
+
+test('hero suggestions are bounded acting names and never search movies',async()=>{
+ const api=createApi(async request=>{const url=new URL(String(request));assert.ok(url.pathname.endsWith('/search/person'));assert.equal(url.searchParams.get('query'),'Nani');return Response.json({results:[{id:1,name:'Nani',known_for_department:'Acting'},{id:2,name:'Director',known_for_department:'Directing'},{id:3,name:'Adult',known_for_department:'Acting',adult:true}]});});
+ const response=await api(request('/api/heroes?q=Nani'),env);assert.equal(response.status,200);assert.deepEqual(await response.json(),{names:['Nani']});
+});
+
+test('all nine hero choices constrain Telugu discovery and retain cast when preferences relax',async()=>{
+ const {HEROES}=await import('../src/app/core/models/questions.data');assert.equal(HEROES.length,9);
+ for(const hero of HEROES){let calls=0;
+  const api=createApi(async request=>{const url=new URL(String(request));
+   if(url.pathname.endsWith('/search/person'))return Response.json({results:[{id:99,name:hero==='Jr NTR'?'N. T. Rama Rao Jr.':hero,known_for_department:'Acting'}]});
+   if(url.pathname.endsWith('/discover/movie')){calls++;assert.equal(url.searchParams.get('with_cast'),'99');assert.equal(url.searchParams.get('with_original_language'),'te');assert.equal(url.searchParams.get('primary_release_date.gte'),'2021-01-01');return Response.json({results:calls===1?[]:[movie],total_pages:1});}
+   return Response.json({...movie,credits:{cast:[{id:99,name:hero}]}});
+  },()=>0);
+  const response=await api(request('/api/movies?era=Recent&genre=Action&hero='+encodeURIComponent(hero)),env);assert.equal(response.status,200,hero);const data=await response.json();assert.equal(data.movies[0].matchedHero,hero);assert.equal(calls,2);
+ }
+});
+
+test('custom actor names resolve aliases and unknown names or mismatched casts never become unrelated recommendations',async()=>{
+ for(const mode of ['alias','unknown','wrong-cast']){
+  const api=createApi(async request=>{const url=new URL(String(request));
+   if(url.pathname.endsWith('/search/person'))return Response.json({results:mode==='unknown'?[]:[{id:99,name:'Actor Fullname',known_for_department:'Acting'}]});
+   if(url.pathname.endsWith('/person/99'))return Response.json({id:99,name:'Actor Fullname',also_known_as:['Custom Actor']});
+   if(url.pathname.endsWith('/discover/movie'))return Response.json({results:[movie],total_pages:1});
+   return Response.json({...movie,credits:{cast:[{id:mode==='wrong-cast'?77:99,name:'Actor Fullname'}]}});
+  },()=>0);
+  const response=await api(request('/api/movies?hero=Custom%20Actor'),env);assert.equal(response.status,mode==='alias'?200:404);
+ }
+});
+
+test('game search excludes checked movies, drains each page, and reports catalogue exhaustion',async()=>{
+ const seenPages:string[]=[];const candidates=Array.from({length:8},(_,i)=>({...movie,id:100+i}));
+ const api=createApi(async request=>{const url=new URL(String(request));if(url.pathname.endsWith('/discover/movie')){
+  assert.equal(url.searchParams.get('with_original_language'),'te');assert.equal(url.searchParams.get('primary_release_date.gte'),'2021-01-01');assert.equal(url.searchParams.has('with_genres'),false);assert.equal(url.searchParams.has('with_runtime.lte'),false);
+  seenPages.push(url.searchParams.get('page')??'1');return Response.json({results:candidates,total_pages:1});
+ }return Response.json(candidates.find(m=>String(m.id)===url.pathname.split('/').pop()));},()=>0);
+ const base='/api/movies?game=true&era=Recent&genre=Action&time=Under%202%20hrs&page=1';
+ const first=await (await api(request(base),env)).json();assert.equal(first.movies.length,6);assert.equal(first.nextPage,1);assert.equal(first.exhausted,false);
+ const exclude=first.movies.map((m:any)=>m.tmdbId).join(',');const second=await (await api(request(base+'&exclude='+exclude),env)).json();
+ assert.equal(second.movies.length,2);assert.equal(second.nextPage,2);assert.equal(second.exhausted,true);assert.ok(second.movies.every((m:any)=>!first.movies.some((old:any)=>old.id===m.id)));
+ const exhausted=await (await api(request('/api/movies?game=true&era=Recent&page=2'),env)).json();assert.deepEqual(exhausted,{movies:[],exhausted:true});
+ for(const query of ['page=0','page=501','exclude=abc','exclude=1,-2'])assert.equal((await api(request('/api/movies?game=true&'+query),env)).status,400);
+});

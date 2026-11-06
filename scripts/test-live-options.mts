@@ -1,5 +1,5 @@
 import {mkdir,writeFile} from 'node:fs/promises';
-import {QUESTIONS} from '../src/app/core/models/questions.data';
+import {ANY_ERA,QUESTIONS,RANDOM_GENRE} from '../src/app/core/models/questions.data';
 import {validOnlineMovie} from '../src/app/core/services/online-movies';
 import {movieEra} from '../src/app/core/services/recommendation';
 const options=(id:string)=>QUESTIONS.find(q=>q.id===id)!.options.map(o=>o.value);
@@ -11,12 +11,13 @@ async function work(){
   const index=next++;const preferences=jobs[index];const reserved=Math.max(Date.now(),nextStart);nextStart=reserved+2700;await delay(Math.max(0,reserved-Date.now()));
   const began=Date.now();
   try{
-   const url='http://localhost:4200/api/movies?'+new URLSearchParams(preferences);
+   const params=new URLSearchParams(preferences);if(preferences.genre===RANDOM_GENRE)params.delete('genre');if(preferences.era===ANY_ERA)params.delete('era');
+   const url='http://localhost:4200/api/movies?'+params;
    let response=await fetch(url,{signal:AbortSignal.timeout(30000)});
    if(response.status===429){await delay(Math.min(60,Number(response.headers.get('Retry-After'))||60)*1000+1000);response=await fetch(url,{signal:AbortSignal.timeout(30000)});}
    const data=await response.json();const movies=data.movies??[];
-   const invalid=movies.filter((m:any)=>!validOnlineMovie(m)||movieEra(m.year)!==preferences.era);
-   const softMatches=movies.filter((m:any)=>m.genres?.includes(preferences.genre)&&(preferences.time==="Doesn't matter"||preferences.time==='Under 2 hrs'&&m.runtimeMinutes>0&&m.runtimeMinutes<120||preferences.time==='2-3 hrs'&&m.runtimeMinutes>=120&&m.runtimeMinutes<=180));
+   const invalid=movies.filter((m:any)=>!validOnlineMovie(m)||(preferences.era!==ANY_ERA&&movieEra(m.year)!==preferences.era));
+   const softMatches=movies.filter((m:any)=>(preferences.genre===RANDOM_GENRE||m.genres?.includes(preferences.genre))&&(preferences.time==="Doesn't matter"||preferences.time==='Under 2 hrs'&&m.runtimeMinutes>0&&m.runtimeMinutes<120||preferences.time==='2-3 hrs'&&m.runtimeMinutes>=120&&m.runtimeMinutes<=180));
    const passed=response.ok&&movies.length>0&&invalid.length===0;
    const row={...preferences,status:response.status,passed,movies:movies.length,exactGenreAndRuntime:softMatches.length,sceneCandidates:movies.filter((m:any)=>m.hintImages?.length>0).length,titles:movies.map((m:any)=>m.title),elapsedMs:Date.now()-began,error:data.error};
    results.push(row);console.log(JSON.stringify({completed:results.length,total:jobs.length,...row}));

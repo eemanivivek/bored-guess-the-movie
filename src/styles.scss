@@ -26,3 +26,9 @@
 .tmdb-credit{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 18px;margin:0 auto 20px;padding:0 22px;color:var(--muted);font-size:9px;line-height:1.7;text-align:center}.tmdb-credit a{text-decoration:underline;text-underline-offset:3px;font-weight:650}
 .text-hint small{font-size:11px;line-height:1.7;color:#d5c6e7;max-width:360px;margin-top:14px}
 .game form{margin-top:28px}.hint-frame>.scene-unavailable{height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;color:#fff9eb;padding:50px 25px;text-align:center}.hint-frame>.scene-unavailable .button{color:#fff9eb}
+.hero-entry { margin-top:24px; max-width:640px; }
+.hero-entry label { display:block; font-weight:700; margin-bottom:10px; }
+.hero-entry input { width:100%; padding:18px; border:1px solid var(--line); border-radius:12px; font:inherit; background:#fffcf7; color:var(--ink); box-sizing:border-box; }
+.hero-entry input:focus-visible { outline:3px solid #a58adb; outline-offset:2px; }
+.hero-suggestions { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+.hero-suggestions button { font:inherit; color:#6342af; background:#ece4f6; border:1px solid #d5c3eb; border-radius:10px; padding:10px 14px; cursor:pointer; }

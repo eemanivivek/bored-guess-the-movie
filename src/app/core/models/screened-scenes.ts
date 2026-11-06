@@ -1,5 +1,5 @@
 import { Movie } from './movie';
-import { MAX_ATTEMPTS } from './game';
+import { MAX_ATTEMPTS, MIN_SCENE_PHOTOS } from './game';
 
 export const imageKey = (value:string):string => value.replace(/^(https:\/\/image\.tmdb\.org\/t\/p\/)\w+\//,'$1original/');
 
@@ -12,4 +12,4 @@ export function safeRoundImages(movie: Movie): string[] {
   .slice(0,MAX_ATTEMPTS);
 }
 export function hasFullSceneDeck(movie: Movie): boolean { return safeRoundImages(movie).length === MAX_ATTEMPTS; }
-export function hasPlayableScenes(movie: Movie): boolean { return safeRoundImages(movie).length > 0; }
+export function hasPlayableScenes(movie: Movie): boolean { return safeRoundImages(movie).length >= MIN_SCENE_PHOTOS; }

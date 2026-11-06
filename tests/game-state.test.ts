@@ -44,7 +44,7 @@ test('skip and reveal are ignored without a movie',()=>{
 });
 
 test('approved scene count determines attempts and every turn advances or finishes the round',()=>{
- for(let count=1;count<=5;count++){
+ for(let count=2;count<=5;count++){
   const photos=Array.from({length:count},(_,i)=>`https://image.tmdb.org/t/p/w1280/scene${i}.jpg`);
   const movie={...data[0],id:-123,tmdbId:123,source:'tmdb' as const,hintImages:photos,screenedHintImages:photos};
   const state=new GameStateService();state.start(movie);
@@ -55,8 +55,9 @@ test('approved scene count determines attempts and every turn advances or finish
    assert.equal(state.attempts(),count-i-1);assert.equal(state.finished(),i===count-1);
   }
   assert.equal(state.skip(),false);assert.equal(state.guess('Extra'),'empty');
-  state.start({...movie,hintImages:[photos[0]],screenedHintImages:[photos[0]]});
-  assert.equal(state.maxAttempts(),1);assert.equal(state.attempts(),1);assert.equal(state.finished(),false);
+  assert.throws(()=>state.start({...movie,hintImages:[photos[0]],screenedHintImages:[photos[0]]}),/At least two/);
+  state.start({...movie,hintImages:photos.slice(0,2),screenedHintImages:photos.slice(0,2)});
+  assert.equal(state.maxAttempts(),2);assert.equal(state.attempts(),2);assert.equal(state.finished(),false);
   assert.equal(state.guess(movie.title),'correct');assert.equal(state.won(),true);
  }
 });

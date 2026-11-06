@@ -2,7 +2,7 @@ import { computed, Injectable, signal } from '@angular/core';
 import { MAX_ATTEMPTS, GameTurn } from '../models/game';
 import { Answers, Movie, normalizeTitle } from '../models/movie';
 import { shuffleHints } from './shuffle-hints';
-import { safeRoundImages } from '../models/screened-scenes';
+import { hasPlayableScenes, safeRoundImages } from '../models/screened-scenes';
 
 @Injectable({ providedIn: 'root' })
 export class GameStateService {
@@ -26,6 +26,7 @@ export class GameStateService {
 
  answer(id: string, value: string) { this.answerState.update(answers => ({ ...answers, [id]: value })); }
  start(movie: Movie) {
+  if(movie.screenedHintImages && !hasPlayableScenes(movie))throw new Error('At least two checked scene photos are needed to play.');
   this.movieState.set({ ...movie, hintImages: shuffleHints(movie.screenedHintImages ? safeRoundImages(movie) : movie.hintImages) });
   this.turnState.set([]);
   this.wonState.set(false);

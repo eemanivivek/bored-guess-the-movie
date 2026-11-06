@@ -17,7 +17,7 @@ export interface TmdbMovie extends TmdbSummary {
  runtime?: number; overview?: string; poster_path?: string | null;
  genres?: {id:number;name:string}[];
  images?: {backdrops?: {file_path:string;iso_639_1?:string|null}[]};
- credits?: {cast?:{name:string}[];crew?:{name:string;job:string}[]};
+ credits?: {cast?:{id?:number;name:string}[];crew?:{name:string;job:string}[]};
  alternative_titles?: {titles?:{title:string}[]};
 }
 
